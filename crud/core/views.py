@@ -28,12 +28,12 @@ def delete(request,id):
 def update(request,id):
     if request.method =="POST":
         up = Model.objects.get(pk=id)
-        mf = ModelForm(request.POST, instance = up)
+        mf = HomeForm(request.POST, instance = up)
         if mf.is_valid():
             mf.save()
-        mf = ModelForm()
+        mf = HomeForm()
     else:
-        up = Model.Objects.get(pk=id)
-        mf = ModelForm(instance =up)
+        up = Model.objects.get(pk=id)
+        mf = HomeForm(instance =up)
     return render(request,'core/update.html',{'mf':mf})            
 

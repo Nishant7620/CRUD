@@ -35,7 +35,7 @@
             <td>{{m.name}}</td>
             <td>{{m.heroic_name}}</td>
             <td>
-              <a href="" class="btn btn-secondary btn-sm" style="margin-bottom: 2px;";>Update</a>
+              <a href="{% url "update" m.id%}" class="btn btn-secondary btn-sm" style="margin-bottom: 2px;";>Update</a>
               <form action="{% url "delete" m.id %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" value="delete">

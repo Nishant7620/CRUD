@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    {{mf}}
+    <form action="" method="POST">
+        {% csrf_token %}
+    {{mf.as_p}}
+    <input type="submit" value="update data">
+    <a href="{% url "home" %}">
+    <input type="button" value="home">
+    </a>
+</form>
 </body>
 </html>
