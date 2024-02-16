@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    
+</head>
+<body>
+    <div class="container"  >
+        <div class="row">
+    <form action="" method="POST">
+        {% csrf_token %}
+    {{hf.as_p}}
+    <input type="submit">
+</form>
+</div>
+<div class="col-md-7 database">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in mm %}
+          <tr>
+            <th scope="row">{{m.id}}</th>
+            <td>{{m.name}}</td>
+            <td>{{m.heroic_name}}</td>
+            <td>
+              <form action="{% url "delete" m.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="delete">
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+</div>
+<script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'core/js/jquery.js' %}"></script>
+<script src="{% static 'core/js/popper.js' %}"></script>
+</body>
+
+</html>
